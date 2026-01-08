@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Coaching | Strong Body. Clear Mind. Wild Heart.</title>
+    <meta name="description" content="I help people build strong bodies, clear minds, and lives that feel aligned. Performance coaching rooted in movement science and real-world training.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-ink: #1a1a18;
+            --color-bark: #2d2a26;
+            --color-stone: #5c5751;
+            --color-sand: #c4b9a8;
+            --color-cream: #f5f1eb;
+            --color-paper: #faf8f5;
+            --color-terra: #b5624e;
+            --color-terra-dark: #994f3e;
+            --color-forest: #3d4a3a;
+
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 8rem;
+            --space-2xl: 12rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-paper);
+            color: var(--color-ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        p {
+            font-size: 1.0625rem;
+            color: var(--color-stone);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        section {
+            padding: var(--space-xl) 0;
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger children */
+        .stagger > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+        .stagger.visible > *:nth-child(2) { transition-delay: 0.1s; }
+        .stagger.visible > *:nth-child(3) { transition-delay: 0.2s; }
+        .stagger.visible > *:nth-child(4) { transition-delay: 0.3s; }
+        .stagger.visible > *:nth-child(5) { transition-delay: 0.4s; }
+        .stagger.visible > *:nth-child(6) { transition-delay: 0.5s; }
+
+        .stagger.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: var(--space-sm) var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--color-paper), transparent);
+            transition: background 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-ink);
+            text-decoration: none;
+        }
+
+        .nav-cta {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-paper);
+            background: var(--color-ink);
+            padding: 0.625rem 1.25rem;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-terra);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--space-xl);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-display);
+            font-size: clamp(2.75rem, 9vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.05;
+            margin-bottom: var(--space-md);
+            color: var(--color-ink);
+        }
+
+        .hero-tagline em {
+            font-style: italic;
+            color: var(--color-terra);
+        }
+
+        .hero-intro {
+            font-size: 1.1875rem;
+            line-height: 1.7;
+            color: var(--color-stone);
+            max-width: 580px;
+            margin-bottom: var(--space-lg);
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-paper);
+            background: var(--color-ink);
+            padding: 1rem 2rem;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            background: var(--color-terra);
+            transform: translateY(-2px);
+        }
+
+        .hero-cta svg {
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(4px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: var(--space-md);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-sand);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .hero-scroll::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--color-sand), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* Principles */
+        .principles {
+            background: var(--color-cream);
+            position: relative;
+        }
+
+        .principles::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--color-sand), transparent);
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-terra);
+            margin-bottom: var(--space-sm);
+        }
+
+        .principles-header {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+        }
+
+        .principles-header h2 {
+            color: var(--color-ink);
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .principle-card {
+            padding: var(--space-md);
+            background: var(--color-paper);
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1);
+        }
+
+        .principle-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--color-sand);
+            line-height: 1;
+            margin-bottom: var(--space-sm);
+        }
+
+        .principle-card h3 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-ink);
+        }
+
+        .principle-card p {
+            font-size: 0.9375rem;
+            color: var(--color-stone);
+        }
+
+        /* Who This Is For */
+        .fit-section {
+            position: relative;
+        }
+
+        .fit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+
+        @media (max-width: 768px) {
+            .fit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fit-column h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .fit-column.for h3 { color: var(--color-forest); }
+        .fit-column.not-for h3 { color: var(--color-stone); }
+
+        .fit-column ul {
+            list-style: none;
+        }
+
+        .fit-column li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 1rem;
+            color: var(--color-bark);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .fit-column li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .fit-column.for li::before { background: var(--color-forest); }
+        .fit-column.not-for li::before { background: var(--color-sand); }
+
+        /* Process */
+        .process {
+            background: var(--color-ink);
+            color: var(--color-paper);
+        }
+
+        .process .section-label {
+            color: var(--color-terra);
+        }
+
+        .process h2 {
+            color: var(--color-paper);
+            margin-bottom: var(--space-lg);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-md);
+        }
+
+        @media (max-width: 768px) {
+            .process-steps {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .process-step {
+            position: relative;
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: 1.75rem;
+            right: -1rem;
+            width: calc(100% - 3.5rem);
+            height: 1px;
+            background: var(--color-stone);
+            opacity: 0.3;
+        }
+
+        .process-step:last-child::before {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .process-step:nth-child(2)::before,
+            .process-step:nth-child(4)::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .process-step::before {
+                display: none;
+            }
+        }
+
+        .step-number {
+            width: 3.5rem;
+            height: 3.5rem;
+            border: 1px solid var(--color-stone);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover .step-number {
+            background: var(--color-terra);
+            border-color: var(--color-terra);
+        }
+
+        .process-step h3 {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-paper);
+        }
+
+        .process-step p {
+            font-size: 0.9375rem;
+            color: var(--color-sand);
+        }
+
+        /* Resources */
+        .resources {
+            background: var(--color-cream);
+        }
+
+        .resources h2 {
+            margin-bottom: var(--space-lg);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .resource-card {
+            padding: var(--space-md);
+            background: var(--color-paper);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1);
+            border-color: var(--color-terra);
+        }
+
+        .resource-badge {
+            display: inline-block;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.25rem 0.5rem;
+            background: var(--color-terra);
+            color: var(--color-paper);
+            margin-bottom: var(--space-sm);
+        }
+
+        .resource-card h3 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-ink);
+        }
+
+        .resource-card p {
+            font-size: 0.9375rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .resource-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-terra);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .resource-card:hover .resource-link {
+            gap: 0.75rem;
+        }
+
+        /* Results */
+        .results {
+            border-top: 1px solid var(--color-sand);
+        }
+
+        .results h2 {
+            margin-bottom: var(--space-lg);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .result-card {
+            padding: var(--space-md);
+            background: var(--color-cream);
+            position: relative;
+        }
+
+        .result-card::before {
+            content: '"';
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: var(--color-sand);
+            position: absolute;
+            top: 0.5rem;
+            left: 1rem;
+            line-height: 1;
+        }
+
+        .result-quote {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--color-bark);
+            margin-bottom: var(--space-sm);
+            padding-top: var(--space-md);
+        }
+
+        .result-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .result-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--color-sand);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--color-bark);
+        }
+
+        .result-info {
+            font-size: 0.875rem;
+        }
+
+        .result-name {
+            font-weight: 600;
+            color: var(--color-ink);
+        }
+
+        .result-detail {
+            color: var(--color-stone);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-ink) 0%, var(--color-bark) 100%);
+            color: var(--color-paper);
+            text-align: center;
+            padding: var(--space-2xl) 0;
+        }
+
+        .cta-section h2 {
+            color: var(--color-paper);
+            margin-bottom: var(--space-sm);
+        }
+
+        .cta-section p {
+            color: var(--color-sand);
+            max-width: 500px;
+            margin: 0 auto var(--space-md);
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--color-ink);
+            background: var(--color-paper);
+            padding: 1.25rem 2.5rem;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--color-terra);
+            color: var(--color-paper);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3);
+        }
+
+        .cta-note {
+            margin-top: var(--space-md);
+            font-size: 0.875rem;
+            color: var(--color-stone);
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            padding: var(--space-lg) 0;
+            border-top: 1px solid var(--color-sand);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+
+        .footer-values {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--color-bark);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-size: 0.875rem;
+            color: var(--color-stone);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-terra);
+        }
+
+        /* Contact Form Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: var(--space-md);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--color-paper);
+            padding: var(--space-lg);
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: var(--space-sm);
+            right: var(--space-sm);
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-stone);
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--color-ink);
+        }
+
+        .modal h3 {
+            margin-bottom: var(--space-md);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-sm);
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: var(--color-bark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--color-sand);
+            background: var(--color-cream);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-terra);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-ink);
+            color: var(--color-paper);
+            border: none;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--color-terra);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="nav">
+        <a href="#" class="nav-logo">Coach</a>
+        <a href="#book" class="nav-cta">Book a Call</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-up">
+                <h1 class="hero-tagline">Strong bodies.<br>Clear minds.<br>Lives that feel <em>aligned.</em></h1>
+                <p class="hero-intro">I'm a performance coach and endurance athlete with a background in movement science, real-world training, and lived experience outside the typical fitness mold. Strength is the entry point. Awareness is what makes it last.</p>
+                <a href="#book" class="hero-cta">
+                    Book a Clarity Call
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">Scroll</div>
+    </section>
+
+    <!-- Principles -->
+    <section class="principles" id="principles">
+        <div class="container">
+            <div class="principles-header fade-up">
+                <span class="section-label">How I Work</span>
+                <h2>Core Principles</h2>
+            </div>
+            <div class="principles-grid stagger">
+                <div class="principle-card">
+                    <span class="principle-number">01</span>
+                    <h3>Strength First</h3>
+                    <p>A capable body supports everything else. We start with building physical resilience.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">02</span>
+                    <h3>Awareness Drives Change</h3>
+                    <p>Patterns matter more than willpower. Understanding why is as important as knowing what.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">03</span>
+                    <h3>Simplicity Wins</h3>
+                    <p>Fundamentals done consistently beat complexity. We cut through the noise.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">04</span>
+                    <h3>Reality Over Fantasy</h3>
+                    <p>We work from where you actually are, not where you think you should be.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">05</span>
+                    <h3>Integrity Over Intensity</h3>
+                    <p>Sustainable effort beats short bursts. We build for the long game.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who This Is For -->
+    <section class="fit-section" id="fit">
+        <div class="container">
+            <div class="fade-up">
+                <span class="section-label">Find Your Fit</span>
+                <h2>Is this right for you?</h2>
+            </div>
+            <div class="fit-grid stagger">
+                <div class="fit-column for">
+                    <h3>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                        This is for you if...
+                    </h3>
+                    <ul>
+                        <li>You're ready to do the work, not just talk about it</li>
+                        <li>You value consistency over quick fixes</li>
+                        <li>You want to understand your patterns, not just follow a plan</li>
+                        <li>You're open to being challenged on your assumptions</li>
+                        <li>You're playing the long game with your health</li>
+                    </ul>
+                </div>
+                <div class="fit-column not-for">
+                    <h3>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                        This isn't for you if...
+                    </h3>
+                    <ul>
+                        <li>You're looking for a magic pill or overnight transformation</li>
+                        <li>You want someone to just tell you what to do without context</li>
+                        <li>You're not ready to take ownership of your progress</li>
+                        <li>You need constant hand-holding and daily check-ins</li>
+                        <li>You're chasing trends instead of building foundations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="fade-up">
+                <span class="section-label">The Process</span>
+                <h2>How we work together</h2>
+            </div>
+            <div class="process-steps stagger">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Assess</h3>
+                    <p>We look at where you are now—honestly. Movement, habits, energy, goals.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Train</h3>
+                    <p>Structured work that meets you where you are and builds from there.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Reflect</h3>
+                    <p>Regular check-ins to see what's working, what's not, and why.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Adjust</h3>
+                    <p>Course corrections based on real data, not assumptions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <div class="fade-up">
+                <span class="section-label">Free Resources</span>
+                <h2>Start here</h2>
+            </div>
+            <div class="resources-grid stagger">
+                <a href="#" class="resource-card">
+                    <span class="resource-badge">Free</span>
+                    <h3>5-Day Reset</h3>
+                    <p>A simple framework covering movement, food, and daily rhythm to recalibrate your baseline.</p>
+                    <span class="resource-link">
+                        Get the guide
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+                <a href="#" class="resource-card">
+                    <span class="resource-badge">Free</span>
+                    <h3>Pattern Clarity Quiz</h3>
+                    <p>Identify the unconscious patterns that are keeping you stuck and what to do about them.</p>
+                    <span class="resource-link">
+                        Take the quiz
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+                <a href="#" class="resource-card">
+                    <span class="resource-badge">Free</span>
+                    <h3>Morning Re-Centering</h3>
+                    <p>A simple PDF guide for starting your day with intention. Takes 10 minutes.</p>
+                    <span class="resource-link">
+                        Download PDF
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results" id="results">
+        <div class="container">
+            <div class="fade-up">
+                <span class="section-label">Results</span>
+                <h2>What clients say</h2>
+            </div>
+            <div class="results-grid stagger">
+                <div class="result-card">
+                    <p class="result-quote">The clarity I got in our first call was worth more than months of trying to figure things out on my own. No fluff, just real insight.</p>
+                    <div class="result-meta">
+                        <div class="result-avatar">M</div>
+                        <div class="result-info">
+                            <div class="result-name">Marcus T.</div>
+                            <div class="result-detail">Software engineer, 34</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-card">
+                    <p class="result-quote">I finally understand why I kept falling off track. The pattern awareness piece changed everything for me.</p>
+                    <div class="result-meta">
+                        <div class="result-avatar">S</div>
+                        <div class="result-info">
+                            <div class="result-name">Sarah K.</div>
+                            <div class="result-detail">Entrepreneur, 41</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="result-card">
+                    <p class="result-quote">Simple, direct, effective. No ego, no BS. Just someone who actually knows what they're doing.</p>
+                    <div class="result-meta">
+                        <div class="result-avatar">J</div>
+                        <div class="result-info">
+                            <div class="result-name">James R.</div>
+                            <div class="result-detail">Creative director, 38</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="book">
+        <div class="container fade-up">
+            <span class="section-label">Ready?</span>
+            <h2>Book a Clarity Call</h2>
+            <p>A free 30-minute conversation to see if we're the right fit. No pressure, no pitch. If it's not right, I'll tell you.</p>
+            <a href="https://calendly.com" target="_blank" class="cta-button">
+                Schedule Your Call
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            <p class="cta-note">Or <a href="#contact" id="contact-link" style="color: var(--color-terra); text-decoration: underline;">send me a message</a> if you prefer email.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-values">Strong body. Clear mind. Wild heart.</p>
+                <div class="footer-links">
+                    <a href="#principles">Principles</a>
+                    <a href="#resources">Resources</a>
+                    <a href="#book">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <h3>Send a Message</h3>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="What's on your mind?" required></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up, .stagger').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#contact') return; // Let the modal handle this
+
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact modal
+        const modal = document.getElementById('contact-modal');
+        const contactLink = document.getElementById('contact-link');
+        const modalClose = document.getElementById('modal-close');
+
+        contactLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.add('active');
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In production, this would send to a backend
+            alert('Message sent! (Demo only - connect to your email service)');
+            modal.classList.remove('active');
+            e.target.reset();
+        });
+
+        // Trigger initial animations after page load
+        window.addEventListener('load', () => {
+            document.querySelector('.hero .fade-up').classList.add('visible');
+        });
+    </script>
+</body>
+</html>
