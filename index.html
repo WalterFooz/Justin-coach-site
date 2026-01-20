@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Just in the Practice | Coaching</title>
-    <meta name="description" content="I help people build strong bodies, clear minds, and lives that feel aligned.">
+    <title>Justin the Practice | Coaching</title>
+    <meta name="description" content="Coaching that blends movement quality, resilience, and awareness — so your body and mind support your life instead of limiting it.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -189,7 +189,7 @@
         /* Hero - Image with overlay */
         .hero {
             position: relative;
-            min-height: 50vh;
+            min-height: 55vh;
             display: flex;
             align-items: flex-end;
             padding: 0;
@@ -299,48 +299,8 @@
             }
 
             .hero-cta {
-                justify-content: center;
-            }
-        }
-
-        /* Video Section */
-        .video-section {
-            position: relative;
-            height: 50vh;
-            min-height: 300px;
-            max-height: 500px;
-            overflow: hidden;
-            background: var(--slate);
-        }
-
-        .video-bg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: 30% center;
-        }
-
-        .video-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                var(--warm-paper) 0%,
-                rgba(248, 246, 243, 0) 15%,
-                rgba(32, 53, 43, 0.1) 50%,
-                rgba(248, 246, 243, 0) 85%,
-                var(--sand-surface) 100%
-            );
-            pointer-events: none;
-        }
-
-        @media (max-width: 600px) {
-            .video-section {
-                height: 40vh;
-                min-height: 200px;
-                max-height: 350px;
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
 
@@ -382,159 +342,195 @@
             font-size: clamp(1.75rem, 3.5vw, 2.25rem);
         }
 
-        /* Principles - Stacked with Arrows on Mobile */
-        .principles-grid {
+        .section-intro {
+            color: var(--ink);
+            opacity: 0.75;
+            max-width: 640px;
+            margin-bottom: var(--space-5);
+            line-height: 1.7;
+        }
+
+        .section-intro p {
+            margin-bottom: var(--space-2);
+        }
+
+        .section-intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Principles - Vertical Cards */
+        .principles-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .principle-card {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1px;
-            background: var(--stone-border);
-            border: 1px solid var(--stone-border);
-        }
-
-        @media (max-width: 900px) {
-            .principles-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .principles-grid {
-                display: flex;
-                flex-direction: column;
-                gap: 0;
-                background: transparent;
-                border: none;
-            }
-
-            .principle {
-                padding: var(--space-2);
-                border: 1px solid var(--stone-border);
-                border-radius: var(--radius-md);
-                text-align: left;
-                position: relative;
-            }
-
-            .principle:not(:last-child) {
-                margin-bottom: var(--space-3);
-            }
-
-            .principle:not(:last-child)::after {
-                content: '';
-                position: absolute;
-                left: 50%;
-                bottom: calc(var(--space-3) * -1);
-                transform: translateX(-50%);
-                width: 0;
-                height: 0;
-                border-left: 6px solid transparent;
-                border-right: 6px solid transparent;
-                border-top: 8px solid var(--clay);
-            }
-
-            .principle-number {
-                font-size: 1.5rem;
-                margin-bottom: var(--space-1);
-                color: var(--clay);
-            }
-
-            .principle h3 {
-                font-size: 1rem;
-                margin-bottom: var(--space-1);
-                justify-content: flex-start;
-            }
-
-            .principle p {
-                font-size: 0.8125rem;
-            }
-
-        }
-
-        .principle {
+            grid-template-columns: auto 1fr;
+            gap: var(--space-3);
+            padding: var(--space-4);
             background: var(--warm-paper);
-            padding: var(--space-3) var(--space-2);
-            text-align: center;
+            border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md);
             transition: all 0.2s ease;
         }
 
-        .principle:hover {
-            background: rgba(255,255,255,0.7);
+        .principle-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
         }
 
         .principle-number {
             font-family: var(--font-display);
-            font-size: 1.75rem;
-            font-weight: 400;
+            font-size: 1.5rem;
             color: var(--clay);
-            line-height: 1;
-            margin-bottom: var(--space-1);
-            opacity: 0.7;
-        }
-
-        .principle h3 {
-            font-size: 1rem;
-            margin-bottom: var(--space-1);
-            color: var(--deep-forest);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .principle h3 .icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .principle h3 .icon svg {
-            width: 16px;
-            height: 16px;
-            stroke: var(--clay);
-            stroke-width: 2;
-            fill: none;
-        }
-
-        .principle p {
-            color: var(--ink);
             opacity: 0.6;
-            font-size: 0.8125rem;
-            line-height: 1.5;
+            line-height: 1;
+            min-width: 40px;
         }
 
-        /* Fit Section - Enhanced */
+        .principle-content h3 {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-2);
+            color: var(--deep-forest);
+        }
+
+        .principle-content p {
+            color: var(--ink);
+            opacity: 0.7;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: var(--space-1);
+        }
+
+        .principle-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            .principle-card {
+                padding: var(--space-3);
+                gap: var(--space-2);
+            }
+
+            .principle-number {
+                font-size: 1.25rem;
+                min-width: 32px;
+            }
+
+            .principle-content h3 {
+                font-size: 1rem;
+                margin-bottom: var(--space-1);
+            }
+
+            .principle-content p {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Process Section */
+        .process-intro {
+            color: var(--ink);
+            opacity: 0.75;
+            max-width: 540px;
+            margin-bottom: var(--space-5);
+            line-height: 1.7;
+        }
+
+        .process-intro p {
+            margin-bottom: var(--space-1);
+        }
+
+        .process-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .process-card {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: var(--space-3);
+            padding: var(--space-4);
+            background: var(--warm-paper);
+            border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+        }
+
+        .process-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        .process-number {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--clay);
+            opacity: 0.6;
+            line-height: 1;
+            min-width: 40px;
+        }
+
+        .process-content h3 {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-2);
+            color: var(--deep-forest);
+        }
+
+        .process-content p {
+            color: var(--ink);
+            opacity: 0.7;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: var(--space-1);
+        }
+
+        .process-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            .process-card {
+                padding: var(--space-3);
+                gap: var(--space-2);
+            }
+
+            .process-number {
+                font-size: 1.25rem;
+                min-width: 32px;
+            }
+
+            .process-content h3 {
+                font-size: 1rem;
+                margin-bottom: var(--space-1);
+            }
+
+            .process-content p {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Fit Section */
+        .fit-intro {
+            color: var(--ink);
+            opacity: 0.75;
+            max-width: 580px;
+            margin-bottom: var(--space-5);
+        }
+
         .fit-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: var(--space-5);
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-4);
+            margin-bottom: var(--space-5);
         }
 
         @media (max-width: 700px) {
             .fit-grid { grid-template-columns: 1fr; gap: var(--space-3); }
         }
 
-        @media (max-width: 600px) {
-            .fit-col {
-                padding: var(--space-3);
-            }
-
-            .fit-col h3 {
-                font-size: 0.75rem;
-                margin-bottom: var(--space-2);
-            }
-
-            .fit-col li {
-                font-size: 0.875rem;
-                padding-left: var(--space-2);
-            }
-
-            .fit-col li::before {
-                width: 6px;
-                top: 12px;
-            }
-        }
-
         .fit-col {
-            padding: var(--space-3);
+            padding: var(--space-4);
             border: 1px solid var(--stone-border);
             border-radius: var(--radius-md);
             background: var(--warm-paper);
@@ -549,14 +545,14 @@
         }
 
         .fit-col:not(.yes) {
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         .fit-col h3 {
             font-size: 0.75rem;
             font-weight: 600;
             font-family: var(--font-body);
-            margin-bottom: var(--space-2);
+            margin-bottom: var(--space-3);
             text-transform: uppercase;
             letter-spacing: 0.12em;
             display: flex;
@@ -569,27 +565,26 @@
         }
 
         .fit-col.yes h3::before {
-            content: '✓';
-            font-size: 0.875rem;
+            content: '';
         }
 
         .fit-col:not(.yes) h3 {
             color: var(--ink);
-            opacity: 0.5;
+            opacity: 0.6;
         }
 
         .fit-col:not(.yes) h3::before {
-            content: '✗';
-            font-size: 0.875rem;
+            content: '';
         }
 
         .fit-col ul { list-style: none; }
 
         .fit-col li {
-            padding: 6px 0;
+            padding: 8px 0;
             font-size: 0.9375rem;
             padding-left: var(--space-3);
             position: relative;
+            line-height: 1.5;
         }
 
         .fit-col.yes li {
@@ -598,14 +593,14 @@
 
         .fit-col:not(.yes) li {
             color: var(--ink);
-            opacity: 0.6;
+            opacity: 0.7;
         }
 
         .fit-col li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 14px;
+            top: 16px;
             width: 6px;
             height: 6px;
             border-radius: 50%;
@@ -619,603 +614,248 @@
             background: var(--stone-border);
         }
 
-        /* Process Section - Timeline on Mobile */
-        .process-flow-large {
+        .fit-unsure {
+            padding: var(--space-4);
+            background: var(--warm-paper);
+            border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md);
+            max-width: 600px;
+        }
+
+        .fit-unsure h3 {
+            font-size: 1rem;
+            margin-bottom: var(--space-2);
+            color: var(--deep-forest);
+        }
+
+        .fit-unsure p {
+            color: var(--ink);
+            opacity: 0.7;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .fit-col {
+                padding: var(--space-3);
+            }
+
+            .fit-col h3 {
+                font-size: 0.6875rem;
+                margin-bottom: var(--space-2);
+            }
+
+            .fit-col li {
+                font-size: 0.875rem;
+                padding-left: var(--space-2);
+            }
+
+            .fit-col li::before {
+                width: 5px;
+                height: 5px;
+                top: 14px;
+            }
+
+            .fit-unsure {
+                padding: var(--space-3);
+            }
+
+            .fit-unsure h3 {
+                font-size: 0.9375rem;
+            }
+
+            .fit-unsure p {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Coaching Tools */
+        .tools-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: var(--space-3);
         }
 
-        .process-step-block {
-            text-align: center;
-            padding: var(--space-3) var(--space-2);
+        @media (max-width: 700px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tool-card {
+            padding: var(--space-4);
             background: var(--warm-paper);
             border: 1px solid var(--stone-border);
             border-radius: var(--radius-md);
             transition: all 0.2s ease;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
         }
 
-        .process-step-block:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        .tool-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
         }
 
-        .process-step-block .step-number {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            color: var(--clay);
-            display: block;
-            margin-bottom: var(--space-1);
-            opacity: 0.6;
-        }
-
-        .process-step-block h3 {
+        .tool-card h3 {
             font-size: 1.0625rem;
-            margin-bottom: var(--space-1);
+            margin-bottom: var(--space-2);
             color: var(--deep-forest);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
         }
 
-        .process-step-block h3 .icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .process-step-block h3 .icon svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--clay);
-            stroke-width: 2;
-            fill: none;
-        }
-
-        .process-step-block p {
-            font-size: 0.8125rem;
+        .tool-card p {
             color: var(--ink);
-            opacity: 0.65;
-            line-height: 1.5;
-        }
-
-        @media (max-width: 800px) {
-            .process-flow-large {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            opacity: 0.7;
+            font-size: 0.9375rem;
+            line-height: 1.6;
         }
 
         @media (max-width: 600px) {
-            .process-flow-large {
-                display: flex;
-                flex-direction: column;
-                gap: 0;
-                position: relative;
-                padding-left: var(--space-5);
+            .tool-card {
+                padding: var(--space-3);
             }
 
-            .process-flow-large::before {
-                content: '';
-                position: absolute;
-                left: 12px;
-                top: var(--space-2);
-                bottom: var(--space-2);
-                width: 2px;
-                background: linear-gradient(to bottom, var(--clay), var(--slate));
-                border-radius: 1px;
-            }
-
-            .process-step-block {
-                position: relative;
-                text-align: left;
-                padding: var(--space-2) 0;
-                background: transparent;
-                border: none;
-                border-radius: 0;
-            }
-
-            .process-step-block::before {
-                content: '';
-                position: absolute;
-                left: calc(var(--space-5) * -1 + 6px);
-                top: 50%;
-                transform: translateY(-50%);
-                width: 14px;
-                height: 14px;
-                background: var(--warm-paper);
-                border: 2px solid var(--clay);
-                border-radius: 50%;
-            }
-
-            .process-step-block .step-number {
-                display: none;
-            }
-
-            .process-step-block h3 {
+            .tool-card h3 {
                 font-size: 1rem;
-                margin-bottom: 4px;
-                justify-content: flex-start;
+                margin-bottom: var(--space-1);
             }
 
-            .process-step-block h3::before {
-                content: attr(data-step) '. ';
-                color: var(--clay);
-            }
-
-            .process-step-block h3 .icon {
-                order: -1;
-            }
-
-            .process-step-block p {
-                font-size: 0.8125rem;
-                line-height: 1.4;
+            .tool-card p {
+                font-size: 0.875rem;
             }
         }
 
-        /* Resources - Mobile Stack Layout */
-        .resources-group {
+        /* Reflections / Testimonials */
+        .reflections-intro {
+            color: var(--ink);
+            opacity: 0.75;
+            max-width: 480px;
+            margin-bottom: var(--space-5);
+        }
+
+        .reflections-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .reflection {
+            padding: var(--space-4);
+            background: var(--warm-paper);
+            border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md);
+            max-width: 700px;
+        }
+
+        .reflection blockquote {
+            font-family: var(--font-display);
+            font-size: 1.0625rem;
+            font-style: italic;
+            color: var(--deep-forest);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            .reflection {
+                padding: var(--space-3);
+            }
+
+            .reflection blockquote {
+                font-size: 0.9375rem;
+            }
+        }
+
+        /* Next Step Section */
+        .next-step-section {
+            background: var(--warm-paper);
+        }
+
+        .next-step-intro {
+            color: var(--ink);
+            opacity: 0.75;
+            max-width: 560px;
+            margin-bottom: var(--space-6);
+            line-height: 1.7;
+        }
+
+        .next-step-intro p {
+            margin-bottom: var(--space-2);
+        }
+
+        .next-step-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-4);
             margin-bottom: var(--space-6);
         }
 
-        .resources-group:last-child { margin-bottom: 0; }
-
-        .resources-group-label {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--slate);
-            margin-bottom: var(--space-3);
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-
-        .resources-group-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--stone-border);
-        }
-
-        .resources-group.paid .resources-group-label { color: var(--clay); }
-
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-3);
-        }
-
-        @media (max-width: 800px) {
-            .resources-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .resources-grid .resource-card:nth-child(3) {
-                grid-column: 1 / -1;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .resources-group {
-                margin-bottom: var(--space-4);
-            }
-
-            .resources-group-label {
-                font-size: 0.625rem;
-                margin-bottom: var(--space-2);
-            }
-
-            .resources-grid {
-                display: flex;
-                flex-direction: column;
-                gap: var(--space-2);
-            }
-
-            .resources-grid .resource-card:nth-child(3) {
-                grid-column: auto;
-            }
-
-            .resource-card {
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-                gap: var(--space-2);
-                padding: var(--space-2);
-            }
-
-            .resource-card-icon {
-                width: 44px;
-                height: 44px;
-                background: var(--sand-surface);
-                border: 1px solid var(--stone-border);
-                border-radius: var(--radius-sm);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-shrink: 0;
-                font-size: 1.25rem;
-            }
-
-            .resource-card.paid .resource-card-icon {
-                background: rgba(176, 122, 91, 0.1);
-                border-color: var(--clay);
-            }
-
-            .resource-card-content {
-                flex: 1;
-                min-width: 0;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .resource-badge {
-                font-size: 0.5625rem;
-                padding: 2px 6px;
-                margin-bottom: var(--space-1);
-            }
-
-            .resource-card h3 {
-                font-size: 0.9375rem;
-                margin-bottom: 2px;
-            }
-
-            .resource-card p {
-                font-size: 0.75rem;
-                margin-bottom: var(--space-1);
-                line-height: 1.4;
-            }
-
-            .resource-footer {
-                justify-content: flex-start;
-            }
-
-            .resource-price {
-                font-size: 0.9375rem;
-            }
-
-            .resource-price span {
-                font-size: 0.625rem;
-            }
-
-            .resource-link {
-                font-size: 0.6875rem;
-            }
-        }
-
-        .resource-card {
-            padding: var(--space-3);
-            background: var(--warm-paper);
-            border: 1px solid var(--stone-border);
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            transition: all 0.25s ease;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        }
-
-        .resource-card-icon {
-            display: none;
-        }
-
-        .resource-card-content {
-            display: contents;
-        }
-
-        .resource-card:hover {
-            border-color: var(--slate);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        }
-
-        .resource-card.paid {
-            background: var(--warm-paper);
-            border-color: var(--clay);
-            box-shadow: 0 1px 3px rgba(163, 128, 103, 0.08);
-        }
-
-        .resource-card.paid:hover {
-            border-color: var(--ember);
-            box-shadow: 0 8px 24px rgba(163, 128, 103, 0.15);
-        }
-
-        .resource-badge {
-            display: inline-block;
-            font-size: 0.625rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 4px 8px;
-            border-radius: var(--radius-sm);
-            margin-bottom: var(--space-2);
-            width: fit-content;
-        }
-
-        .resource-card:not(.paid) .resource-badge {
-            background: rgba(110, 127, 106, 0.12);
-            color: var(--slate);
-        }
-
-        .resource-card.paid .resource-badge {
-            background: rgba(176, 122, 91, 0.12);
-            color: var(--clay);
-        }
-
-        .resource-card h3 {
-            font-size: 1.0625rem;
-            margin-bottom: var(--space-1);
-            color: var(--deep-forest);
-        }
-
-        .resource-card p {
-            font-size: 0.8125rem;
-            color: var(--ink);
-            opacity: 0.65;
-            margin-bottom: var(--space-2);
-            flex-grow: 1;
-        }
-
-        .resource-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .resource-price {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            color: var(--clay);
-        }
-
-        .resource-price span {
-            font-family: var(--font-body);
-            font-size: 0.6875rem;
-            color: var(--ink);
-            opacity: 0.5;
-        }
-
-        .resource-link {
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--clay);
-            transition: all 0.2s ease;
-        }
-
-        .resource-card:hover .resource-link {
-            color: var(--ember);
-            letter-spacing: 0.02em;
-        }
-
-        /* Testimonials - With Media Support */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-3);
-        }
-
-        .testimonial {
-            padding: var(--space-3);
-            background: var(--warm-paper);
-            border: 1px solid var(--stone-border);
-            border-radius: var(--radius-md);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            transition: all 0.2s ease;
-        }
-
-        .testimonial:hover {
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-        }
-
-        .testimonial-media {
-            position: relative;
-            margin-bottom: var(--space-2);
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            background: var(--stone-border);
-        }
-
-        .testimonial-media img,
-        .testimonial-media video {
-            width: 100%;
-            height: auto;
-            display: block;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-        }
-
-        .testimonial-media .play-button {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(31, 36, 33, 0.3);
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .testimonial-media .play-button:hover {
-            background: rgba(31, 36, 33, 0.5);
-        }
-
-        .testimonial-media .play-button svg {
-            width: 48px;
-            height: 48px;
-            color: var(--warm-paper);
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-            margin-bottom: var(--space-2);
-        }
-
-        .testimonial-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .testimonial-author {
-            font-size: 0.75rem;
-        }
-
-        .testimonial-author strong {
-            color: var(--ink);
-            font-weight: 600;
-            display: block;
-        }
-
-        .testimonial-author span {
-            color: var(--ink);
-            opacity: 0.5;
-        }
-
-        .testimonial-quote {
-            font-family: var(--font-display);
-            font-size: 0.9375rem;
-            font-style: italic;
-            color: var(--deep-forest);
-            line-height: 1.5;
-        }
-
-        @media (max-width: 800px) {
-            .testimonials-grid {
+        @media (max-width: 700px) {
+            .next-step-options {
                 grid-template-columns: 1fr;
-                gap: var(--space-2);
+                gap: var(--space-3);
             }
+        }
+
+        .next-step-card {
+            padding: var(--space-4);
+            background: var(--sand-surface);
+            border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md);
+        }
+
+        .next-step-card.primary {
+            background: linear-gradient(135deg, rgba(163, 128, 103, 0.12) 0%, rgba(163, 128, 103, 0.06) 100%);
+            border-color: var(--clay);
+        }
+
+        .next-step-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-2);
+            color: var(--deep-forest);
+        }
+
+        .next-step-card p {
+            color: var(--ink);
+            opacity: 0.75;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: var(--space-3);
         }
 
         @media (max-width: 600px) {
-            .testimonial {
-                padding: var(--space-2);
+            .next-step-card {
+                padding: var(--space-3);
             }
 
-            .testimonial-media {
-                margin: calc(var(--space-2) * -1);
-                margin-bottom: var(--space-2);
-                border-radius: 0;
+            .next-step-card h3 {
+                font-size: 1rem;
             }
 
-            .testimonial-media .play-button svg {
-                width: 40px;
-                height: 40px;
-            }
-
-            .testimonial-header {
-                gap: var(--space-1);
-                margin-bottom: var(--space-1);
-            }
-
-            .testimonial-avatar {
-                width: 32px;
-                height: 32px;
-            }
-
-            .testimonial-author {
-                font-size: 0.6875rem;
-            }
-
-            .testimonial-quote {
-                font-size: 0.8125rem;
-                line-height: 1.4;
+            .next-step-card p {
+                font-size: 0.875rem;
             }
         }
 
-        /* CTA Section */
-        .cta-section {
-            background: var(--deep-forest);
-            color: var(--warm-paper);
+        /* Final Quote */
+        .final-quote {
             text-align: center;
-            padding: var(--space-10) var(--space-4);
+            padding: var(--space-8) var(--space-4);
+            background: var(--deep-forest);
+        }
+
+        .final-quote blockquote {
+            font-family: var(--font-display);
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            font-style: italic;
+            color: var(--warm-paper);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
         @media (max-width: 600px) {
-            .cta-section {
+            .final-quote {
                 padding: var(--space-6) var(--space-3);
             }
-
-            .cta-section h2 {
-                font-size: 1.5rem;
-            }
-
-            .cta-section .subtitle {
-                font-size: 0.9375rem;
-                margin-bottom: var(--space-4);
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .cta-buttons .btn-primary,
-            .cta-buttons .btn-secondary {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
-
-            .cta-note {
-                margin-top: var(--space-3);
-            }
         }
-
-        .cta-section h2 {
-            color: var(--warm-paper);
-            font-size: clamp(1.75rem, 3.5vw, 2.25rem);
-            margin-bottom: var(--space-2);
-        }
-
-        .cta-section .subtitle {
-            color: rgba(248, 246, 243, 0.6);
-            max-width: 400px;
-            margin: 0 auto var(--space-5);
-            font-size: 1rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-2);
-            flex-wrap: wrap;
-        }
-
-        .cta-section .btn-primary {
-            background: var(--clay);
-        }
-
-        .cta-section .btn-primary:hover { background: #C48A6B; }
-
-        .cta-section .btn-secondary {
-            border-color: rgba(248, 246, 243, 0.3);
-            color: var(--warm-paper);
-        }
-
-        .cta-section .btn-secondary:hover {
-            background: rgba(248, 246, 243, 0.1);
-            border-color: rgba(248, 246, 243, 0.5);
-        }
-
-        .cta-note {
-            margin-top: var(--space-4);
-            font-size: 0.8125rem;
-            color: rgba(248, 246, 243, 0.4);
-        }
-
-        .cta-note a {
-            color: rgba(248, 246, 243, 0.6);
-            text-decoration: underline;
-        }
-
-        .cta-note a:hover { color: var(--warm-paper); }
 
         /* Footer */
         footer {
@@ -1413,8 +1053,8 @@
 </head>
 <body>
     <nav id="nav">
-        <a href="#" class="nav-logo">Just in the Practice</a>
-        <a href="#contact" class="nav-link">Get in touch</a>
+        <a href="#" class="nav-logo">Justin the Practice</a>
+        <a href="#next-step" class="nav-link">Get Started</a>
     </nav>
 
     <!-- Hero -->
@@ -1423,274 +1063,255 @@
             <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=1600&h=900&fit=crop&crop=center" alt="Pine tree canopy looking up">
         </div>
         <div class="hero-content fade-up">
-            <h1>I help people build strong bodies, clear minds, and lives that feel aligned.</h1>
-            <p class="hero-intro">I'm a performance coach and endurance athlete with a background in movement science, real-world training, and lived experience outside the typical fitness mold. Strength is the entry point. Awareness is what makes it last.</p>
+            <p class="hero-label">Justin the Practice</p>
+            <h1>Strength is only part of the practice.</h1>
+            <p class="hero-intro">Coaching that blends movement quality, resilience, and awareness — so your body and mind support your life instead of limiting it.</p>
             <div class="hero-cta">
-                <a href="https://calendly.com/jgerbrecht/free-consultation" target="_blank" class="btn-primary">
-                    Book a Clarity Call
+                <a href="#clarity-quiz" class="btn-primary">
+                    Get Training Clarity
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
+                <a href="https://calendly.com/jgerbrecht/free-consultation" target="_blank" class="btn-secondary">Book a Free Clarity Call</a>
             </div>
         </div>
     </section>
 
-    <!-- Video Loop Section -->
-    <section class="video-section">
-        <video autoplay muted loop playsinline class="video-bg">
-            <source src="backflip.mp4" type="video/mp4">
-        </video>
-        <div class="video-overlay"></div>
-    </section>
-
-    <!-- Principles -->
-    <section class="principles section-alt fade-up">
+    <!-- Core Principles -->
+    <section class="principles-section section-alt fade-up" id="principles">
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Foundation</p>
                 <h2>Core Principles</h2>
             </div>
-            <div class="principles-grid">
-                <div class="principle">
-                    <span class="principle-number">01</span>
-                    <h3><span class="icon"><svg viewBox="0 0 24 24"><path d="M6.5 6.5L17.5 17.5M6.5 17.5L17.5 6.5M12 3v4M12 17v4M3 12h4M17 12h4"/></svg></span> Strength First</h3>
-                    <p>A capable body supports everything else.</p>
+            <div class="section-intro">
+                <p>These principles guide how we train, how decisions are made, and how progress is built — physically and mentally.</p>
+                <p>They are not ideals.<br>They are the filters behind every session, adjustment, and conversation.</p>
+            </div>
+            <div class="principles-list">
+                <div class="principle-card">
+                    <span class="principle-number">1</span>
+                    <div class="principle-content">
+                        <h3>Awareness Guides Action</h3>
+                        <p>Training begins with attention.</p>
+                        <p>Understanding how your body responds to load, fatigue, stress, and recovery allows better decisions — in training and in life. Awareness turns effort into progress instead of noise.</p>
+                    </div>
                 </div>
-                <div class="principle">
-                    <span class="principle-number">02</span>
-                    <h3><span class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 5C5.4 5 2 12 2 12s3.4 7 10 7 10-7 10-7-3.4-7-10-7z"/></svg></span> Awareness Drives Change</h3>
-                    <p>Patterns matter more than willpower.</p>
+                <div class="principle-card">
+                    <span class="principle-number">2</span>
+                    <div class="principle-content">
+                        <h3>Reality Over Fantasy</h3>
+                        <p>Progress starts with honesty.</p>
+                        <p>Training must reflect your current capacity, history, lifestyle, and responsibilities — not ideals pulled from comparison or ego.</p>
+                    </div>
                 </div>
-                <div class="principle">
-                    <span class="principle-number">03</span>
-                    <h3><span class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg></span> Simplicity Wins</h3>
-                    <p>Fundamentals done consistently beat complexity.</p>
+                <div class="principle-card">
+                    <span class="principle-number">3</span>
+                    <div class="principle-content">
+                        <h3>Simplicity Works</h3>
+                        <p>Clear structure, repeatable action, and focused intent allow progress to compound over time.</p>
+                    </div>
                 </div>
-                <div class="principle">
-                    <span class="principle-number">04</span>
-                    <h3><span class="icon"><svg viewBox="0 0 24 24"><path d="M12 2L12 8M12 22L12 16M2 12L8 12M22 12L16 12"/><circle cx="12" cy="12" r="4"/></svg></span> Reality Over Fantasy</h3>
-                    <p>We work from where you actually are.</p>
+                <div class="principle-card">
+                    <span class="principle-number">4</span>
+                    <div class="principle-content">
+                        <h3>Integrity Over Intensity</h3>
+                        <p>How you train matters more than how hard you train.</p>
+                        <p>Quality movement, honest loading, appropriate pacing, and respect for recovery build far more progress than forcing effort. Intensity has value — but only when it's applied with intention.</p>
+                    </div>
                 </div>
-                <div class="principle">
-                    <span class="principle-number">05</span>
-                    <h3><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 12h16M4 6h16M4 18h16"/></svg></span> Integrity Over Intensity</h3>
-                    <p>Sustainable effort beats short bursts.</p>
+                <div class="principle-card">
+                    <span class="principle-number">5</span>
+                    <div class="principle-content">
+                        <h3>Resilience Through Strength</h3>
+                        <p>Strength builds tolerance and expands capacity.</p>
+                        <p>A stronger body moves with more confidence, absorbs stress more effectively, and remains capable as demands increase. Strength is not pursued for numbers alone — it is developed to support durability, longevity, and independence.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How I Train -->
-    <section class="process-section-full fade-up">
+    <section class="process-section fade-up" id="process">
         <div class="container">
             <div class="section-header">
                 <p class="section-label">The Process</p>
                 <h2>How I Train</h2>
             </div>
-            <div class="process-flow-large">
-                <div class="process-step-block">
-                    <span class="step-number">01</span>
-                    <h3 data-step="1"><span class="icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></span> Assess</h3>
-                    <p>Understand where you are, not where you think you should be.</p>
+            <div class="process-intro">
+                <p>Training is not a fixed plan — it's a living process.</p>
+                <p>Your body changes.<br>Your life changes.<br>The approach must adapt accordingly.</p>
+            </div>
+            <div class="process-list">
+                <div class="process-card">
+                    <span class="process-number">1</span>
+                    <div class="process-content">
+                        <h3>Assess</h3>
+                        <p>We start by understanding where you are — physically and contextually.</p>
+                        <p>Movement patterns, strength levels, injury history, training background, stress, and lifestyle all matter. Assessment isn't about labeling you — it's about creating clarity so training decisions make sense.</p>
+                    </div>
                 </div>
-                <div class="process-step-block">
-                    <span class="step-number">02</span>
-                    <h3 data-step="2"><span class="icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span> Train</h3>
-                    <p>Build strength and habits through consistent, focused practice.</p>
+                <div class="process-card">
+                    <span class="process-number">2</span>
+                    <div class="process-content">
+                        <h3>Build</h3>
+                        <p>From that foundation, we build a plan around your needs — not a template.</p>
+                        <p>Strength, movement quality, conditioning, and recovery are balanced according to your current capacity and goals. Nothing is random. Everything has a reason.</p>
+                    </div>
                 </div>
-                <div class="process-step-block">
-                    <span class="step-number">03</span>
-                    <h3 data-step="3"><span class="icon"><svg viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg></span> Reflect</h3>
-                    <p>Notice what's working and what patterns need attention.</p>
+                <div class="process-card">
+                    <span class="process-number">3</span>
+                    <div class="process-content">
+                        <h3>Execute</h3>
+                        <p>Execution is where awareness becomes practice.</p>
+                        <p>Sessions are designed to develop strength and skill while improving your ability to notice effort, tension, and fatigue. We train with intent — not autopilot.</p>
+                    </div>
                 </div>
-                <div class="process-step-block">
-                    <span class="step-number">04</span>
-                    <h3 data-step="4"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></span> Adjust</h3>
-                    <p>Refine the approach based on real feedback, not theory.</p>
+                <div class="process-card">
+                    <span class="process-number">4</span>
+                    <div class="process-content">
+                        <h3>Adjust</h3>
+                        <p>Progress is rarely linear.</p>
+                        <p>As your body adapts and life demands shift, the plan evolves. Loads change. Volume changes. Focus shifts. Adjustments are not setbacks — they're how momentum is maintained.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Fit Check -->
-    <section class="fit-section section-alt fade-up">
+    <section class="fit-section section-alt fade-up" id="fit">
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Fit Check</p>
-                <h2>Is this right for you?</h2>
+                <h2>Is This Right For You?</h2>
             </div>
+            <p class="fit-intro">This practice is designed for people who want more than workouts — and are willing to participate in the process.</p>
             <div class="fit-grid">
                 <div class="fit-col yes">
-                    <h3>Good Fit</h3>
+                    <h3>This is likely a good fit if you:</h3>
                     <ul>
-                        <li>Ready to do the work, not just talk about it</li>
-                        <li>Value consistency over quick fixes</li>
-                        <li>Open to being gently challenged</li>
-                        <li>Playing the long game with your health</li>
+                        <li>Want to feel capable, confident, and physically prepared for daily life</li>
+                        <li>Care about how your body moves, not just how it looks</li>
+                        <li>Value long-term progress over quick fixes</li>
+                        <li>Are willing to slow down when needed to move forward sustainably</li>
+                        <li>Want coaching that considers stress, recovery, and real-world demands</li>
+                        <li>Prefer clarity, structure, and intention over constant novelty</li>
                     </ul>
                 </div>
                 <div class="fit-col">
-                    <h3>Not For You</h3>
+                    <h3>This may not be the right fit if you:</h3>
                     <ul>
-                        <li>Looking for overnight transformations</li>
-                        <li>Want someone to just tell you what to do</li>
-                        <li>Chasing trends over foundations</li>
-                        <li>Need daily hand-holding</li>
+                        <li>Are looking for a rapid transformation or short-term challenge</li>
+                        <li>Want generic programs without individual adjustment</li>
+                        <li>Prefer maximal intensity at all times</li>
+                        <li>Are unwilling to modify training when your body or life requires it</li>
+                        <li>Want aesthetics to be the sole focus of training</li>
                     </ul>
                 </div>
             </div>
+            <div class="fit-unsure">
+                <h3>If you're unsure</h3>
+                <p>You don't need to have everything figured out. Curiosity, honesty, and willingness to engage with the process matter far more than experience level or current fitness.</p>
+            </div>
         </div>
     </section>
 
-    <!-- Resources -->
-    <section class="resources-section section-alt fade-up" id="resources">
+    <!-- Coaching Tools -->
+    <section class="tools-section fade-up" id="tools">
         <div class="container">
             <div class="section-header">
-                <p class="section-label">Resources</p>
-                <h2>Tools & Programs</h2>
+                <p class="section-label">What's Included</p>
+                <h2>Coaching Tools</h2>
             </div>
-
-            <!-- Free Resources -->
-            <div class="resources-group">
-                <p class="resources-group-label">Free</p>
-                <div class="resources-grid">
-                    <a href="resources/5-day-reset.html" class="resource-card">
-                        <div class="resource-card-icon">📋</div>
-                        <div class="resource-card-content">
-                            <span class="resource-badge">Free Guide</span>
-                            <h3>5-Day Reset</h3>
-                            <p>Movement, food, and rhythm basics to recalibrate your baseline.</p>
-                            <div class="resource-footer">
-                                <span class="resource-link">Get the guide →</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="resources/pattern-quiz.html" class="resource-card">
-                        <div class="resource-card-icon">✓</div>
-                        <div class="resource-card-content">
-                            <span class="resource-badge">Free Quiz</span>
-                            <h3>Pattern Clarity Quiz</h3>
-                            <p>Identify the patterns keeping you stuck.</p>
-                            <div class="resource-footer">
-                                <span class="resource-link">Take the quiz →</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="resources/morning-recentering.html" class="resource-card">
-                        <div class="resource-card-icon">☀</div>
-                        <div class="resource-card-content">
-                            <span class="resource-badge">Free PDF</span>
-                            <h3>Morning Re-Centering</h3>
-                            <p>A simple morning ritual to start your day grounded.</p>
-                            <div class="resource-footer">
-                                <span class="resource-link">Download PDF →</span>
-                            </div>
-                        </div>
-                    </a>
+            <div class="section-intro">
+                <p>The tools below support the practice — they are not the practice itself. Each is applied intentionally based on your goals, capacity, and current season of life.</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Personalized Training</h3>
+                    <p>Individualized strength and movement programming built around your body, your schedule, and your goals. Plans evolve as capacity increases and life demands change.</p>
                 </div>
-            </div>
-
-            <!-- Paid Programs -->
-            <div class="resources-group paid">
-                <p class="resources-group-label">Paid Programs</p>
-                <div class="resources-grid">
-                    <a href="programs/strength-structure.html" class="resource-card paid">
-                        <div class="resource-card-icon">💪</div>
-                        <div class="resource-card-content">
-                            <span class="resource-badge">4–6 Weeks</span>
-                            <h3>Strength & Structure</h3>
-                            <p>Build lasting strength habits and movement quality.</p>
-                            <div class="resource-footer">
-                                <span class="resource-price">$97 <span>one-time</span></span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="programs/hyrox-prep.html" class="resource-card paid">
-                        <div class="resource-card-icon">🏃</div>
-                        <div class="resource-card-content">
-                            <span class="resource-badge">8 Weeks</span>
-                            <h3>HYROX Prep</h3>
-                            <p>Race-specific preparation for any level.</p>
-                            <div class="resource-footer">
-                                <span class="resource-price">$67 <span>one-time</span></span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="programs/minimal-equipment.html" class="resource-card paid">
-                        <div class="resource-card-icon">🏠</div>
-                        <div class="resource-card-content">
-                            <span class="resource-badge">6 Weeks</span>
-                            <h3>Minimal Equipment</h3>
-                            <p>Full-body training at home.</p>
-                            <div class="resource-footer">
-                                <span class="resource-price">$47 <span>one-time</span></span>
-                            </div>
-                        </div>
-                    </a>
+                <div class="tool-card">
+                    <h3>Movement Quality & Skill Development</h3>
+                    <p>Focused work on technique, control, and coordination to improve efficiency, confidence, and durability. The goal is not perfect movement — it's capable movement you can rely on.</p>
+                </div>
+                <div class="tool-card">
+                    <h3>Conditioning & Work Capacity</h3>
+                    <p>Structured conditioning designed to build endurance and resilience without unnecessary fatigue. Intensity is used with intention, supporting both performance and daily life demands.</p>
+                </div>
+                <div class="tool-card">
+                    <h3>Lifestyle & Recovery Support</h3>
+                    <p>Guidance around recovery, stress load, and sustainable routines so training enhances your life rather than competing with it.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials fade-up" id="testimonials">
+    <!-- Client Reflections -->
+    <section class="reflections-section section-alt fade-up" id="reflections">
         <div class="container">
             <div class="section-header">
-                <p class="section-label">Results</p>
+                <p class="section-label">Client Reflections</p>
                 <h2>What People Say</h2>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial">
-                    <div class="testimonial-media" id="video-testimonial-1">
-                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=225&fit=crop" alt="Video testimonial preview">
-                        <div class="play-button" onclick="playVideo(this)">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                    </div>
-                    <div class="testimonial-header">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=72&h=72&fit=crop&crop=face" alt="Marcus T." class="testimonial-avatar">
-                        <p class="testimonial-author"><strong>Marcus T.</strong> <span>Software engineer</span></p>
-                    </div>
-                    <p class="testimonial-quote">"The clarity I got in our first call was worth more than months trying to figure it out alone."</p>
+            <p class="reflections-intro">Progress looks different for everyone. These reflections speak to the experience of the work — not just the outcomes.</p>
+            <div class="reflections-grid">
+                <div class="reflection">
+                    <blockquote>"Working with Justin changed how I approach training entirely. I'm stronger, but more importantly, I understand my body better and feel more confident navigating fatigue and recovery."</blockquote>
                 </div>
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=72&h=72&fit=crop&crop=face" alt="Sarah K." class="testimonial-avatar">
-                        <p class="testimonial-author"><strong>Sarah K.</strong> <span>Entrepreneur</span></p>
-                    </div>
-                    <p class="testimonial-quote">"I finally understand why I kept falling off track. The pattern awareness piece changed everything."</p>
+                <div class="reflection">
+                    <blockquote>"This was the first time training felt sustainable. The structure made sense, and adjustments were always thoughtful. I stopped feeling like I had to push all the time."</blockquote>
                 </div>
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=72&h=72&fit=crop&crop=face" alt="James R." class="testimonial-avatar">
-                        <p class="testimonial-author"><strong>James R.</strong> <span>Creative director</span></p>
-                    </div>
-                    <p class="testimonial-quote">"Simple, direct, effective. No ego, no BS. Just someone who actually gets it."</p>
+                <div class="reflection">
+                    <blockquote>"I came in wanting better fitness. I left with clarity, consistency, and a healthier relationship with training."</blockquote>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta-section" id="contact">
-        <h2>Let's figure this out together</h2>
-        <p class="subtitle">Book a free 30-minute call. No pressure. If it's not a fit, I'll say so.</p>
-        <div class="cta-buttons">
-            <a href="https://calendly.com/jgerbrecht/free-consultation" target="_blank" class="btn-primary">
-                Book a Clarity Call
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <a href="submit-testimonial.html" class="btn-secondary">Share Your Story</a>
+    <!-- Take the Next Step -->
+    <section class="next-step-section fade-up" id="next-step">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Get Started</p>
+                <h2>Take the Next Step</h2>
+            </div>
+            <div class="next-step-intro">
+                <p>If this approach resonates, the next step is simple.</p>
+                <p>Start with clarity — not commitment.</p>
+                <p>Whether you're returning to training, refining your current approach, or looking for a more sustainable path forward, we'll begin by understanding where you are and what you need most right now.</p>
+            </div>
+            <div class="next-step-options">
+                <div class="next-step-card primary" id="clarity-quiz">
+                    <h3>Get Training Clarity</h3>
+                    <p>A short assessment designed to help you better understand your current capacity, priorities, and next best steps.</p>
+                    <a href="resources/pattern-quiz.html" class="btn-primary">
+                        Get Training Clarity
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="next-step-card">
+                    <h3>Prefer to talk it through?</h3>
+                    <p>You're welcome to schedule a free clarity call. This conversation is an opportunity to explore fit, ask questions, and determine whether working together makes sense — with no pressure either way.</p>
+                    <a href="https://calendly.com/jgerbrecht/free-consultation" target="_blank" class="btn-secondary">Book a Free Clarity Call</a>
+                </div>
+            </div>
         </div>
-        <p class="cta-note">Prefer email? <a href="#" id="contact-link">Send a message</a></p>
+    </section>
+
+    <!-- Final Quote -->
+    <section class="final-quote">
+        <blockquote>The goal isn't perfection or intensity.<br>It's progress built with intention.</blockquote>
     </section>
 
     <!-- Footer -->
     <footer class="container">
-        <span class="footer-tagline">Strong body. Clear mind. Wild heart.</span>
+        <span class="footer-tagline">Justin the Practice</span>
         <div class="footer-links">
-            <a href="#resources">Resources</a>
-            <a href="#testimonials">Results</a>
-            <a href="#contact">Contact</a>
+            <a href="#principles">Principles</a>
+            <a href="#process">Process</a>
+            <a href="#next-step">Get Started</a>
         </div>
     </footer>
 
@@ -1761,13 +1382,6 @@
 
         // Initial animation
         document.querySelector('.hero-content')?.classList.add('visible');
-
-        // Video testimonial play
-        function playVideo(button) {
-            const container = button.parentElement;
-            // In production, replace with actual video embed
-            alert('Video testimonial would play here. (Connect to video hosting service)');
-        }
     </script>
 </body>
 </html>
